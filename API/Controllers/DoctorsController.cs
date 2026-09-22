@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AppLogic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -7,27 +7,33 @@ namespace API.Controllers
     [ApiController]
     public class DoctorsController : ControllerBase
     {
+        private readonly IDoctorManager manager;
+        public DoctorsController(IDoctorManager pManager)
+        {
+            manager = pManager;
+        }
+
         [HttpGet]
         public string GetDoctorCorreo()
         {
-            return "Datos del médico";
+            return manager.GetDoctorCorreo();
         }
         [HttpGet]
         public string GetDoctor()
         {
-            return "Datos del médico";
+            return manager.GetDoctor();
         }
 
         [HttpGet]
         public string GetAllDoctors()
         {
-            return "Datos de todos los médicos";
+            return manager.GetAllDoctors();
         }
 
         [HttpGet("DemeElDoctorPorSuID")]
         public string GetDoctorById(int doctorId)
         {
-            return "Datos del médico por ID: " + doctorId;
+            return manager.GetDoctorById(doctorId);
         }
     }
 }

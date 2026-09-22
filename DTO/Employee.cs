@@ -11,6 +11,6 @@
         public string DateOfBirth { get; set; }
         public string HiringDate { get; set; }
         public string Status { get; set; }
-        public int ManagerId { get; set; }
+        public int? ManagerId { get; set; }
     }
 }
