@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="API/API.csproj" />
   <Project Path="AppLogic/AppLogic.csproj" Id="48a545d4-3941-4ec6-a3d1-fc4522947868" />
+  <Project Path="DataAccess/DataAccess.csproj" Id="1b9495e4-952b-4517-9e8c-157536f8a128" />
   <Project Path="DTO/DTO.csproj" Id="073398bc-0815-49e5-abb9-c00c8d0b23ed" />
 </Solution>

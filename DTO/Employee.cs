@@ -1,8 +1,7 @@
 ﻿namespace DTO
 {
-    public class Employee
+    public class Employee: BaseClass
     {
-        public int Id { get; set; }
         public string SecurityId { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }

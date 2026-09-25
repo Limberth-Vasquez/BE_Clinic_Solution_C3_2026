@@ -1,6 +1,6 @@
 ﻿namespace DTO
 {
-    public class Patient
+    public class Patient : BaseClass
     {
         public string SocialSecurityId { get; set; }
         public string Name { get; set; }

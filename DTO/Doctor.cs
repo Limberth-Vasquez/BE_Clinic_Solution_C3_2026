@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DTO
+﻿namespace DTO
 {
-    internal class Doctor
+    public class Doctor : BaseClass
     {
     }
 }
