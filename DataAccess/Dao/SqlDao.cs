@@ -4,7 +4,7 @@ namespace DataAccess.Dao
 {
     public class SqlDao
     {
-        private string connectionString = "******";
+        private string connectionString = "server=limberth\\MSSQLSERVER01;Database=Clinic_Solution_C3_2026;Trusted_Connection=True;TrustServerCertificate=True;";
 
         //singleton instance
         private static SqlDao? instance;

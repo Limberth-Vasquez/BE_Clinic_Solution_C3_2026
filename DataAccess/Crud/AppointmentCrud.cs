@@ -39,5 +39,10 @@ namespace DataAccess.Crud
         {
             throw new NotImplementedException();
         }
+
+        public List<T> RetrieveAllByPatientId<T>(int patientId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
