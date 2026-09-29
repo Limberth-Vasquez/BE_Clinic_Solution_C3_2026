@@ -16,15 +16,37 @@ namespace API.Controllers
         }
 
         [HttpGet("ObtenerTodosLosEmpleados")]
-        public async Task<List<Employee>> ReturnAllEmployess()
+        public async Task<ApiResponse> ReturnAllEmployess()
         {
-            return await _rhConnector.ReturnAllEmployees();
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = await _rhConnector.ReturnAllEmployees();
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
 
         [HttpGet("ObtenerEspecialidades")]
-        public async Task<List<string>> GetSpecialties()
+        public async Task<ApiResponse> GetSpecialties()
         {
-            return await _rhConnector.GetSpecialties();
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = await _rhConnector.GetSpecialties();
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
     }
 }

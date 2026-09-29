@@ -39,7 +39,7 @@ namespace DataAccess.Mappers
             operation.AddIntParam("patientid", appointment.PatientId);
             operation.AddDatetimeParam("date", appointment.AppointmentDate);
             operation.AddVarcharParam("title", appointment.Title);
-            operation.AddVarcharParam("specialty", appointment.Speciality);
+            operation.AddVarcharParam("speciality", appointment.Speciality);
             return operation;
         }
 

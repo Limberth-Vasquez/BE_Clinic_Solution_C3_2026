@@ -15,19 +15,52 @@ namespace API.Controllers
         }
 
         [HttpGet("GetPatient")]
-        public string GetPatient()
+        public ApiResponse GetPatient()
         {
-            return manager.GetPatient();
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = manager.GetPatient();
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
         [HttpGet("GetAllPatients")]
-        public List<Patient> GetAllPatients()
+        public ApiResponse GetAllPatients()
         {
-            return manager.GetAllPatients();
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = manager.GetAllPatients();
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
         [HttpGet("GetPatientByDoctor")]
-        public string GetPatientByDoctor(int doctorId)
+        public ApiResponse GetPatientByDoctor(int doctorId)
         {
-            return manager.GetPatientByDoctor(doctorId);
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = manager.GetPatientByDoctor(doctorId);
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
     }
 }

@@ -16,14 +16,37 @@ namespace API.Controllers
         }
 
         [HttpPost("CrearCita")]
-        public string CreateAppointment(Appointment dto)
+        public ApiResponse CreateAppointment(Appointment dto)
         {
-            return _appointmentManager.CreateAppointment(dto);
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = _appointmentManager.CreateAppointment(dto);
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
         [HttpGet("ObtenerCitasPorPaciente")]
-        public List<Appointment> GetAppointmentByPatientId(int patientId)
+        public ApiResponse GetAppointmentByPatientId(int patientId)
         {
-            return _appointmentManager.GetAppointmentsByPatientId(patientId);
+
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = _appointmentManager.GetAppointmentsByPatientId(patientId);
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
     }
 }

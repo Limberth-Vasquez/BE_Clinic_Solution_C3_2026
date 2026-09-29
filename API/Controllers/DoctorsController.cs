@@ -1,4 +1,5 @@
 ﻿using AppLogic;
+using DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -14,26 +15,71 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public string GetDoctorCorreo()
+        public ApiResponse GetDoctorCorreo()
         {
-            return manager.GetDoctorCorreo();
+
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = manager.GetDoctorCorreo();
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
         [HttpGet]
-        public string GetDoctor()
+        public ApiResponse GetDoctor()
         {
-            return manager.GetDoctor();
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = manager.GetDoctor();
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
 
         [HttpGet]
-        public string GetAllDoctors()
+        public ApiResponse GetAllDoctors()
         {
-            return manager.GetAllDoctors();
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = manager.GetAllDoctors();
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
 
         [HttpGet("DemeElDoctorPorSuID")]
-        public string GetDoctorById(int doctorId)
+        public ApiResponse GetDoctorById(int doctorId)
         {
-            return manager.GetDoctorById(doctorId);
+            var response = new ApiResponse();
+            try
+            {
+                response.Data = manager.GetDoctorById(doctorId);
+                response.Result = "ok";
+            }
+            catch (Exception ex)
+            {
+                response.Result = "error";
+                response.Message = ex.Message + " " + ex.InnerException?.Message;
+            }
+            return response;
         }
     }
 }
