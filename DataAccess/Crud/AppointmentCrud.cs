@@ -42,7 +42,24 @@ namespace DataAccess.Crud
 
         public List<T> RetrieveAllByPatientId<T>(int patientId)
         {
-            throw new NotImplementedException();
+            var operacion = _mapper.RetrieveAllByPatientId(patientId);
+            //paso 1 pedir la operacion al mapper
+
+            var results = _sqldao.ExecuteStoredProcedureWithQuery(operacion);
+            //paso 2 ejecutar la operacion en la base de datos y obtener los resultados
+
+            //paso 3 convertir los resultados en una lista de objeto T
+            var resultList = new List<T>();
+            if (results.Count > 0)
+            {
+                var dtoList = _mapper.BuildObjects(results); // aca le devuelve la lista de BaseClass
+                foreach (var item in dtoList)
+                {
+                    resultList.Add((T)Convert.ChangeType(item, typeof(T)));
+                }
+            }
+
+            return resultList;
         }
     }
 }
