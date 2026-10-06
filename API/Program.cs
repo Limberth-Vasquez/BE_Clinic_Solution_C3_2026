@@ -12,6 +12,18 @@ builder.Services.AddSingleton<IDoctorManager, DoctorManager>();
 builder.Services.AddSingleton<IRHConnector, RHConnector>();
 builder.Services.AddSingleton<IAppointmentManager, AppointmentManager>();
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "Demo_Policy",
+        policy => {
+            policy.AllowAnyOrigin(); //mypage.com, www.mypage.com, localhost:3000, etc.
+            policy.AllowAnyHeader(); // application/json, text/plain, etc.
+            policy.AllowAnyMethod(); // GET, POST, PUT, DELETE, etc.
+        });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,5 +46,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors();
 
 app.Run();
